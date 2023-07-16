@@ -1,0 +1,27 @@
+.bookListTitle {
+  font-size: 2.2rem;
+  font-weight: 600;
+  text-align: center;
+  font-family: $font-1;
+  color: $primary;
+  text-shadow: 5px 2px 2px rgba(0, 0, 0, 0.5);
+  margin: 1rem 0;
+}
+
+.loadingBooks {
+  font-size: 2.2rem;
+  font-weight: 600;
+  text-align: center;
+  font-family: $font-1;
+  color: $primary;
+  text-shadow: 5px 2px 2px rgba(0, 0, 0, 0.5);
+  margin: 1rem 0;
+}
+
+.booksContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+}

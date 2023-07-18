@@ -9,3 +9,8 @@ export type Book = {
     price: number;
     image: string;
   };
+
+  export type CartContextType = {
+    cart: Book[];
+    addToCart: (book: Book) => void;
+  };

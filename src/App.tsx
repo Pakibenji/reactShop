@@ -17,13 +17,15 @@ const App: React.FC = () => {
   };
 
   return (
-    <div>
+    <>
       <CartContext.Provider value={contextValue}>
-        <h1 className="headTitle">JAVASCRIPT BOOKS SHOP</h1>
-        <CartSummary />
+        <div className="head">
+          <h1 className="headTitle">JAVASCRIPT BOOKS SHOP</h1>
+          <CartSummary />
+        </div>
         <BookList />
       </CartContext.Provider>
-    </div>
+    </>
   );
 };
 

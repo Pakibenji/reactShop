@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CartContext } from "../App";
+import { CartContextType } from "../types";
+import { IconShoppingCart } from "@tabler/icons-react";
 
 const CartSummary: React.FC = () => {
+  const { cart } = useContext(CartContext) as CartContextType;
   return (
     <>
-      <h4>Caddie (1)</h4>
+      <div className="cartBox">
+        <IconShoppingCart />
+        <span>{cart.length}</span>
+      </div>
     </>
   );
 };

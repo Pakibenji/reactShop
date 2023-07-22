@@ -4,12 +4,12 @@ import { CartContextType } from "../types";
 import { IconShoppingCart } from "@tabler/icons-react";
 
 const CartSummary: React.FC = () => {
-  const { cart } = useContext(CartContext) as CartContextType;
+  const { countCartItems } = useContext(CartContext) as CartContextType;
   return (
     <>
       <div className="cartBox">
         <IconShoppingCart />
-        <span>{cart.length}</span>
+        <span>{countCartItems()}</span>
       </div>
     </>
   );

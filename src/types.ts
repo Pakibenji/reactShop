@@ -1,4 +1,6 @@
 export type Book = {
+    quantity: number;
+    id: number;
     title: string;
     author: {
       lastName: string;
@@ -11,6 +13,14 @@ export type Book = {
   };
 
   export type CartContextType = {
-    cart: Book[];
-    addToCart: (book: Book) => void;
+    cart: CartType;
+    addToCart: (book: Book, quantity: number) => void;
+    countCartItems: () => number;
+  };
+
+  export type CartType = {
+    [key: number | string]: {
+      book: Book;
+      quantity: number;
+    };
   };

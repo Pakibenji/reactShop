@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
-import { Book } from "../types";
 import { CartContext } from "../App";
-import { CartContextType } from "../types";
+import { CartContextType, Book } from "../types";
 
 type Props = {
   book: Book;
+  quantity: number;
 };
 
-const BookCard: React.FC<Props> = ({ book }) => {
+const BookCard: React.FC<Props> = ({ book, quantity }) => {
   const { addToCart } = useContext(CartContext) as CartContextType;
 
   return (
@@ -20,7 +20,7 @@ const BookCard: React.FC<Props> = ({ book }) => {
       <p>{book.publisher}</p>
       <p>{book.year}</p>
       <p>{book.price} €</p>
-      <button onClick={() => addToCart(book)}>Add To Cart</button>
+      <button onClick={() => addToCart(book, quantity)}>Add To Cart</button>
     </div>
   );
 };

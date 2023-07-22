@@ -26,9 +26,12 @@ body {
   & .headTitle {
     font-family: $font-1;
     font-size: 3rem;
-    color: $primary;
     text-align: left;
     margin: 1rem 0 1rem 5rem;
     text-shadow: 5px 2px 2px rgba(0, 0, 0, 0.5);
+    & a {
+      text-decoration: none;
+      color: $primary;
+    }
   }
 }

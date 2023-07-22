@@ -1,30 +1,58 @@
 import React, { useState, createContext } from "react";
 import BookList from "./components/BookList";
 import CartSummary from "./components/CartSummary";
-import { Book, CartContextType } from "./types";
+import { Book, CartContextType, CartType } from "./types";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import CartDetails from "./components/CartDetails";
 
 export const CartContext = createContext({});
 
 const App: React.FC = () => {
-  const [cart, setCart] = useState<Book[]>([]);
+  const [cart, setCart] = useState({} as CartType);
 
   const addToCart = (book: Book) => {
-    setCart([...cart, book]);
+    if (!cart[book.id]) {
+      cart[book.id] = { book: book, quantity: 1 };
+    } else {
+      cart[book.id].quantity += 1;
+    }
+    setCart({ ...cart });
   };
+
+  const countCartItems = () => {
+    let count = 0;
+    Object.keys(cart).map((key) => {
+      count += cart[key].quantity;
+    });
+
+    return count;
+  };
+
   const contextValue: CartContextType = {
     cart,
     addToCart,
+    countCartItems,
   };
 
   return (
     <>
-      <CartContext.Provider value={contextValue}>
-        <div className="head">
-          <h1 className="headTitle">JAVASCRIPT BOOKS SHOP</h1>
-          <CartSummary />
-        </div>
-        <BookList />
-      </CartContext.Provider>
+      <Router>
+        <CartContext.Provider value={contextValue}>
+          <div className="head">
+            <h1 className="headTitle">
+              <Link to="/">JAVASCRIPT BOOKS SHOP</Link>
+            </h1>
+            <Link to="/cart">
+              <CartSummary />
+            </Link>
+          </div>
+          <Routes>
+            <Route path="/" element={<BookList />} />
+            <Route path="/cart" element={<CartDetails />} />
+          </Routes>
+          <hr />
+        </CartContext.Provider>
+      </Router>
     </>
   );
 };

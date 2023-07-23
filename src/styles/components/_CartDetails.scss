@@ -7,14 +7,15 @@
     font-size: 2rem;
     width: 75%;
     display: block;
-    margin: 3rem auto 3rem 9rem;
+    margin: 3rem auto;
+    padding: 0.5rem;
     color: $primary;
     background: $secondary;
     border-radius: 2px;
   }
   & table {
-    width: 100%;
-    border-collapse: collapse;
+    margin: 0 auto;
+    border: 3px solid $primary;
     & th {
       font-family: $font-2;
       font-size: 1.5rem;

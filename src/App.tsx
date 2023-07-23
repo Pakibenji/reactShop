@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import BookList from "./components/BookList";
 import CartSummary from "./components/CartSummary";
 import { Book, CartContextType, CartType } from "./types";
@@ -7,8 +7,28 @@ import CartDetails from "./components/CartDetails";
 
 export const CartContext = createContext({});
 
+const CART_KEY: string = "js-shop";
+
 const App: React.FC = () => {
   const [cart, setCart] = useState({} as CartType);
+
+  useEffect(() => {
+    const cartFromStorage = localStorage.getItem(CART_KEY);
+    if (cartFromStorage !== null) {
+      setCart(JSON.parse(cartFromStorage));
+    }
+  }, []);
+
+  useEffect(() => {
+    const cartJson = JSON.stringify(cart);
+    const isCartEmpty = Object.keys(cart).length === 0;
+    if (!isCartEmpty) {
+      localStorage.setItem(CART_KEY, cartJson);
+    } else {
+      localStorage.removeItem(CART_KEY);
+    }
+    document.title = `JS Shop (${countCartItems()})`;
+  }, [cart]);
 
   const addToCart = (book: Book) => {
     if (!cart[book.id]) {
@@ -57,9 +77,12 @@ const App: React.FC = () => {
             <h1 className="headTitle">
               <Link to="/">JAVASCRIPT BOOKS SHOP</Link>
             </h1>
-            <Link to="/cart">
-              <CartSummary />
-            </Link>
+            <div className="cart">
+              {" "}
+              <Link to="/cart">
+                <CartSummary />
+              </Link>
+            </div>
           </div>
           <Routes>
             <Route path="/" element={<BookList />} />

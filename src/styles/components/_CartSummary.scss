@@ -1,5 +1,24 @@
-.cartBox {
+.cart {
   display: flex;
-  flex-wrap: wrap;
-  text-decoration: none;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 5rem 1rem 0;
+  border: 1px solid $primary;
+  padding: 1rem;
+  & a {
+    text-decoration: none;
+    color: $primary;
+    font-family: $font-1;
+    font-size: 1.8rem;
+    text-align: center;
+    align-items: center;
+    & svg {
+      margin-right: 0.8rem;
+      scale: 1.3;
+      &:hover {
+        cursor: pointer;
+        color: $secondary;
+      }
+    }
+  }
 }

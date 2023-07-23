@@ -23,6 +23,7 @@ body {
 .head {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   & .headTitle {
     font-family: $font-1;
     font-size: 3rem;

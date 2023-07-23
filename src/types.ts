@@ -8,7 +8,7 @@ export type Book = {
     };
     publisher: string;
     year: number;
-    price: number;
+    price: number,
     image: string;
   };
 

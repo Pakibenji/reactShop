@@ -37,7 +37,7 @@ const CartDetails: React.FC = () => {
                   </td>
                   <td>{book.title}</td>
                   <td>{book.price} €</td>
-                  <td>{book.price * quantity} €</td>
+                  <td>{(book.price * quantity).toFixed(2)} €</td>
                 </tr>
               );
             })}

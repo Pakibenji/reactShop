@@ -19,6 +19,19 @@ const App: React.FC = () => {
     setCart({ ...cart });
   };
 
+  const removeFromCart = (book: Book) => {
+    if (cart[book.id].quantity === 1) {
+      delete cart[book.id];
+    } else {
+      cart[book.id].quantity -= 1;
+    }
+    setCart({ ...cart });
+  };
+
+  const emptyCart = () => {
+    setCart({});
+  };
+
   const countCartItems = () => {
     let count = 0;
     Object.keys(cart).map((key) => {
@@ -31,6 +44,8 @@ const App: React.FC = () => {
   const contextValue: CartContextType = {
     cart,
     addToCart,
+    removeFromCart,
+    emptyCart,
     countCartItems,
   };
 
@@ -50,7 +65,6 @@ const App: React.FC = () => {
             <Route path="/" element={<BookList />} />
             <Route path="/cart" element={<CartDetails />} />
           </Routes>
-          <hr />
         </CartContext.Provider>
       </Router>
     </>

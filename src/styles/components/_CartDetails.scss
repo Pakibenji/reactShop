@@ -1,0 +1,61 @@
+.cartDetails {
+  width: 100%;
+  & h2 {
+    align-items: center;
+    text-align: center;
+    font-family: $font-1;
+    font-size: 2rem;
+    width: 75%;
+    display: block;
+    margin: 3rem auto 3rem 9rem;
+    color: $primary;
+    background: $secondary;
+    border-radius: 2px;
+  }
+  & table {
+    width: 100%;
+    border-collapse: collapse;
+    & th {
+      font-family: $font-2;
+      font-size: 1.5rem;
+      text-align: center;
+      color: $primary;
+      background: $background;
+      padding: 0.5rem;
+    }
+    & tbody {
+      & tr:nth-child(even) {
+        & td {
+          background: $background;
+        }
+      }
+    }
+    & td:first-of-type {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    & td {
+      font-family: $font-2;
+      font-size: 1.5rem;
+      text-align: center;
+      color: $primary;
+      background: $secondary;
+      padding: 0.5rem;
+
+      & svg {
+        cursor: pointer;
+      }
+    }
+  }
+  & .emptyCart {
+    margin-top: 5rem;
+    width: 100%;
+    text-align: center;
+    & svg {
+      scale: 2;
+      color: $primary;
+      cursor: pointer;
+    }
+  }
+}

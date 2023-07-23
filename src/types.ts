@@ -15,6 +15,8 @@ export type Book = {
   export type CartContextType = {
     cart: CartType;
     addToCart: (book: Book, quantity: number) => void;
+    removeFromCart: (book: Book) => void;
+    emptyCart: () => void;
     countCartItems: () => number;
   };
 
